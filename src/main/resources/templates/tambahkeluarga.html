@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Tambahkan Keluarga
+	</title>
+
+	<div layout:fragment="content">
+	
+		
+		<h3>Tambah keluarga </h3>
+		<h4 th:text="${message}"></h4>
+		<form action="/keluarga/tambah" method="POST" th:object="${keluarga}">
+		<h2 th:text="${messageNIK}"></h2>
+			<div>
+				<label for="alamat">Alamat</label> 
+				<input required="required" type="alamat" name = "alamat" th:field="*{alamat}" />
+			</div>
+			<div>
+				<label for="rt">RT</label> 
+				<input required="required" type="text" name = "rt" th:field="*{rt}" />
+			</div>
+			<div>
+				<label for="rw">RW</label> 
+				<input required="required" type="text" name = "rw" th:field="*{rw}"/>
+			</div>
+			<div>
+				<label for="kelurahan">Kelurahan/Desa</label> 
+				<select required="required" name = "kelurahan" th:field="*{id_kelurahan}">
+					<option selected="selected" disabled="disabled" value = "0">---Pilih Kelurahan---</option>
+					<div th:each="daftarkelurahan, iterationStatus: ${daftarkelurahan}">
+					  	<option th:value="${daftarkelurahan.id}" th:text="${daftarkelurahan.nama_kelurahan}"></option>
+					</div>
+				</select>
+			</div>
+			<div>
+				<label for="kecamatan">Kecamatan</label> 
+				<select required="required" name ="kecamatan">
+					<option selected="selected" disabled="disabled" value = "0">---Pilih Kecamatan---</option>
+					<div th:each="daftarkecamatan, iterationStatus: ${daftarkecamatan}">
+						<option th:value="${daftarkecamatan.id}" th:text="${daftarkecamatan.nama_kecamatan}"></option>
+					</div>
+				</select>
+			</div>
+			<div>
+				<label for="kota">Kota</label> 
+				<select required="required" name = "kota">
+					<option selected="selected" disabled="disabled" value = "0">---Pilih Kota---</option>
+					<div th:each="daftarkota, iterationStatus: ${daftarkota}">
+						<option  th:value="${daftarkota.id}" th:text="${daftarkota.nama_kota}"></option>
+					</div>
+				</select>
+			</div>
+			
+			<div>
+				<button type="submit" name="action" value="submit">Tambahkan</button>
+			</div>
+		</form>
+		
+		
+	</div>
+	
+</html>

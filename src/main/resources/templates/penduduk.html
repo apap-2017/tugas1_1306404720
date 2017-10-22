@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Cari Penduduk
+	</title>
+
+	<div layout:fragment="content">
+	
+		
+		<h3>Lihat Data Penduduk berdasarkan NIK</h3>
+		
+		<form action="/penduduk" method="GET">
+		<h2 th:text="${messageNIK}"></h2>
+			<div>
+				<label for="nik">Masukkan Nomor Induk Kependudukan.</label> 
+				<input type="text" name = "nik" />
+			</div>
+			<div>
+				<button type="submit">Cari!</button>
+			</div>
+		</form>
+		
+		<h3>Lihat Data Keluarga berdasarkan NKK</h3>
+		<form action="/keluarga" method="GET">
+		<h2 th:text="${message}"></h2>
+			<div>
+				<label for="nkk">Masukkan Nomor Kartu Keluarga.</label> 
+				<input type="text" name = "nkk" />
+			</div>
+			<div>
+				<button type="submit">Cari!</button>
+			</div>
+		</form>
+	</div>
+	
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Cari Penduduk
+	</title>
+
+	
+	<div layout:fragment="content">
+	<h5 th:text="${message}"></h5>
+		<p th:text="'Lihat data penduduk - ' + ${penduduk.nik}"></p>
+		<p th:text="'NIK : ' + ${penduduk.nik}">NIK</p>
+		<p th:text="'Nama : ' + ${penduduk.nama}">NIK</p>
+		<p th:text="'Tempat/Tanggal lahir : ' + ${penduduk.tempat_lahir} +', '+${penduduk.tanggal_lahir}">NIK</p>
+		<p th:text="'Alamat : ' + ${penduduk.keluarga.nomor_kk}">NIK</p>
+		<p th:text="'RT/RW : ' + ${penduduk.keluarga.rt} + '/' + ${penduduk.keluarga.rw}">NIK</p>
+		<p th:text="'Kelurahan/Desa : ' + ${penduduk.keluarga.kelurahan.nama_kelurahan}">NIK</p>
+		<p th:text="'Kecamatan : ' + ${penduduk.keluarga.kelurahan.kecamatan.nama_kecamatan}">NIK</p>
+		<p th:text="'Kota : ' + ${penduduk.keluarga.kelurahan.kecamatan.kota.nama_kota}">NIK</p>
+		<p th:text="'Golongan Darah: ' + ${penduduk.golongan_darah}">NIK</p>
+		<p th:text="'Agama : ' + ${penduduk.agama}">NIK</p>
+		<p th:text="'Status Perkawinan : ' + ${penduduk.status_perkawinan}">NIK</p>
+		
+		<div th:switch="${penduduk.is_wni}"> 
+  			<p th:case="'1'">Kewarganegaraan: WNI</p>
+  			<p th:case="'0'">Kewarganegaraan: WNA</p> 
+		</div>
+		<div th:switch="${penduduk.is_wafat}"> 
+  			<p th:case="'1'">Status Kematian: Meninggal</p>
+  			<p th:case="'0'">Status Kematian: Hidup</p> 
+		</div>
+		
+		<form action="/penduduk/mati" method="POST">
+			<div>
+				<button type="submit" name="action" th:value="${penduduk.nik}">Ubah Status Kematian</button>
+			</div>
+		</form>
+	</div>
+	
+</html>

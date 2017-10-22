@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Edit Informasi Keluarga
+	</title>
+
+	<div layout:fragment="content">
+	
+		
+		<h3>Edit Informasi Keluarga</h3>
+		<h4 th:text="${message}"></h4>
+		<form th:action="'/keluarga/ubah/'+${keluarga.nomor_kk}" method="POST" th:object="${keluarga}">
+
+			<div>
+				<label for="alamat">Alamat</label> 
+				<input required="required" type="text" name = "alamat" th:field="*{alamat}" />
+			</div>
+			<div>
+				<label for="rt">RT</label> 
+				<input required="required" type="text" name = "rt" th:field="*{rt}" />
+			</div>
+			<div>
+				<label for="rw">RW</label> 
+				<input required="required" type="text" name = "rw" th:field="*{rw}" />
+			</div>
+			<div>
+				<label for="kelurahanbaru">Kelurahan</label> 
+				<input required="required" type="text" name = "kelurahanbaru" id = "kelurahanbaru" th:value= "*{kelurahan.nama_kelurahan}" />
+			</div> 
+			
+			<div>
+				<button type="submit" name="action" value="submit">Update</button>
+			</div>
+		</form>
+		
+		
+	</div>
+	
+</html>

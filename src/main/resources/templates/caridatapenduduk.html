@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Cari Penduduk
+	</title>
+
+	<div layout:fragment="content">
+	
+		
+		<h3>Lihat Data Penduduk berdasarkan Kota, Kecamatan, Kelurahan</h3>
+		<h2 th:text="${message}"></h2>
+		<form action="/penduduk/cari" method="GET">
+		
+			<div>
+				<label for="kt">Pilih Kota.</label>  
+				<select required="required" name = "kt">
+				<div th:each="kota,iterationStatus: ${kota}">
+					 
+					  <option  th:disabled="${param.kt==null}? 'False':${param.kt[0]}!= ${kota.id}" th:selected="${param.kt==null}? 'False':${param.kt[0]}== ${kota.id}" th:value="${kota.id}" th:text="${kota.nama_kota}"></option>
+				</div>
+				</select>
+			</div>
+			
+			<div th:if="${kecamatan != null}">
+				<label for="kc">Pilih Kecamatan.</label>  
+				<select required="required" name = "kc">
+				<div th:each="kecamatan,iterationStatus: ${kecamatan}">
+					  <option th:disabled="${param.kc==null}? 'False':${param.kc[0]}!= ${kecamatan.id}" th:selected="${param.kc==null}? '':${param.kc[0]}== ${kecamatan.id}" th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}"></option>
+				</div>
+				</select>
+			</div>
+			
+			<div th:if="${kelurahan != null}">
+				<label for="kl">Pilih Kelurahan.</label>  
+				<select required="required" name = "kl">
+				<div th:each="kelurahan,iterationStatus: ${kelurahan}">
+					  <option th:selected="${param.kl==null}? '':${param.kl[0]}== ${kelurahan.id}" th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}"></option>
+				</div>
+				</select>
+			</div>
+			
+			
+			
+			<div>
+				<button type="submit">Cari!</button>
+			</div>
+			
+			
+		</form>
+		
+		
+	</div>
+	
+</html>

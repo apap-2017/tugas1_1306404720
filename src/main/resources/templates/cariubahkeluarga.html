@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+	<title layout:fragment="title">
+	SIPENON DKI | Cari Keluarga
+	</title>
+
+	<div layout:fragment="content">
+	
+		
+		<h3>Ubah Data Keluarga</h3>
+		<h6>Cari data keluarga yang ingin diubah berdasarkan NKK.</h6>
+		<form action="/keluarga/ubah" method="post">
+		<h2 th:text="${message}"></h2>
+			<div>
+				<label for="nkk">Masukkan Nomor Kartu Keluarga.</label> 
+				<input type="text" name = "nkk" />
+			</div>
+			<div>
+				<button type="submit" name="action" value="submit">Cari!</button>
+			</div>
+		</form>
+		
+	</div>
+	
+</html>
